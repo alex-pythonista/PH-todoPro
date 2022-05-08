@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <style>
+    th, td{
+      border: 1px solid black;
+    }
+    td {
+      text-align: center;
+    }
+  </style>
+  <body>
+
+    <h2>Welcome to Todo Pro</h2>
+
+    <p>Add your task</p>
+    <form method="POST">
+      {% csrf_token %}
+      <label for="fname">Task name</label>
+      <input type="text" id="fname" name="new_task">
+      <label for="cars">Priority</label>
+        <select name="priority" id="priority">
+          <option value="High">High</option>
+          <option value="Medium">Medium</option>
+          <option value="Low">Low</option>
+        </select>
+      <input type="submit" value="Add">
+    </form>
+    <h3>Task list</h3>
+    <table style="width:50%">
+      <tr>
+        <th>Task name</th>
+        <th>Priority</th>
+        <th>Action</th>
+      </tr>
+      {% for task in tasks %}
+      <tr>
+        <td>{{task.task_name}}</td>
+        <td>{{task.priority}}</td>
+        <td><a href="{% url 'delete' task.id %}">Done</a></td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <p>Task list app by [your name]</p> 
+
+  </body>
+</html>
+
