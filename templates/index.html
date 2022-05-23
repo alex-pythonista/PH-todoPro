@@ -36,7 +36,7 @@
       <tr>
         <td>{{task.task_name}}</td>
         <td>{{task.priority}}</td>
-        <td><a href="{% url 'delete' task.id %}">Done</a></td>
+        <td><a href="{% url 'delete' pk=task.id %}">Done</a></td>
       </tr>
       {% endfor %}
     </table>
