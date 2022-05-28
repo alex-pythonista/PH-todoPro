@@ -9,7 +9,6 @@ def home(request):
         new_task = request.POST.get('new_task')
         priority = request.POST.get('priority')
         task = TodoList(task_name=new_task, priority=priority)
-        print(task)
         task.save()
 
     context = {'tasks': tasks}
